@@ -50,9 +50,6 @@ const app = Vue.createApp({
         },
         healingPotionAvailable() {
             return this.healthPotionsLeft > 0;
-        },
-        healthWithBrackets() {
-            return '(' + this.healthPotionsLeft + ')';
         }
     },
     methods: {
@@ -60,6 +57,7 @@ const app = Vue.createApp({
             this.playerHealth = this.maxPlayerHealth;
             this.monsterHealth = this.maxMonsterHealth;
             this.currentRound = 0;
+            this.healthPotionsLeft = 3;
             this.winner = null;
             this.logMessages = [];
         },
