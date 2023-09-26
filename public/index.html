@@ -39,7 +39,7 @@
       <section id="controls" v-if="!winner">
         <button @click="attackMonster">ATTACK</button>
         <button @click="specialAttack" :disabled="specialAttackAvailable">SPECIAL ATTACK</button>
-        <button @click="healPlayer" :disabled="!healingPotionAvailable ">HEAL ( {{healthPotionsLeft}} )</button>
+        <button @click="healPlayer" :disabled="!healingPotionAvailable ">HEAL {{healthWithBrackets}}</button>
         <button @click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">

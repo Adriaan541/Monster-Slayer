@@ -50,6 +50,9 @@ const app = Vue.createApp({
         },
         healingPotionAvailable() {
             return this.healthPotionsLeft > 0;
+        },
+        healthWithBrackets() {
+            return '(' + this.healthPotionsLeft + ')';
         }
     },
     methods: {
