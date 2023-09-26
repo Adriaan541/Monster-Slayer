@@ -11,6 +11,7 @@ const app = Vue.createApp({
             playerHealth: 100,
             monsterHealth: 150,
             currentRound: 0,
+            healthPotionsLeft: 3,
             winner: null,
             logMessages: []
         }
@@ -47,6 +48,9 @@ const app = Vue.createApp({
         specialAttackAvailable() {
             return this.currentRound % 3 !== 0
         },
+        healingPotionAvailable() {
+            return this.healthPotionsLeft > 0;
+        }
     },
     methods: {
         startGame() {
@@ -70,14 +74,15 @@ const app = Vue.createApp({
         },
         specialAttack() {
             this.currentRound++;
-            const attackPoints = getRandomValue(10, 25);
+            const attackPoints = getRandomValue(15, 25);
             this.monsterHealth -= attackPoints;
             this.AddLogMessage('player', 'special attack', attackPoints);
             this.attackPlayer();
         },
         healPlayer() {
             this.currentRound++;
-            const healingPoints = getRandomValue(8, 20);
+            this.healthPotionsLeft--;
+            const healingPoints = getRandomValue(15, 25);
             this.playerHealth += healingPoints;
             if (this.playerHealth > this.maxPlayerHealth) {
                 const actualHealingPoints = this.maxPlayerHealth - (this.playerHealth - healingPoints);
